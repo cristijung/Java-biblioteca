@@ -10,6 +10,8 @@ public class Emprestimos {
         this.devolucao = devolucao;
     }
 
+    public Emprestimos(){}
+
     public void listarCatalogo(){
         System.out.println("Livros disponiveis: ");
         for(String livros : livros){
@@ -34,11 +36,9 @@ public class Emprestimos {
                 if(livros[x].equalsIgnoreCase(nomeDoLivro)) {
                     estaEmprestado[x] = true;
                     devolucao[x] = dataDeDevolucao;
+                    nomesLeitores[x] = nomeDoLeitor;
                     System.out.println("O livro " + nomeDoLivro + " foi emprestado ao leitor " + nomeDoLeitor );
                 }
-            }
-            else{
-                System.out.println("O livro não esta disponível.");
             }
         }
     }
