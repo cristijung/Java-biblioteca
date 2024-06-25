@@ -1,16 +1,20 @@
+import java.util.Arrays;
+
 public class Emprestimos {
     String[] livros;
     String[] nomesLeitores;
     String[] devolucao;
     boolean[] estaEmprestado;
 
-    public Emprestimos(String[] livrosDisponiveis, String[] nomesLeitores, String[] devolucao) {
+    public Emprestimos(String[] livrosDisponiveis) {
         this.livros = livrosDisponiveis;
-        this.nomesLeitores = nomesLeitores;
-        this.devolucao = devolucao;
+        this.nomesLeitores = new String[livrosDisponiveis.length];
+        this.devolucao = new String[livrosDisponiveis.length];
+        this.estaEmprestado = new boolean[livrosDisponiveis.length];
+        Arrays.fill(estaEmprestado, false);
     }
 
-    public Emprestimos(){}
+    //public Emprestimos(){}
 
     public void listarCatalogo(){
         System.out.println("Livros disponiveis: ");
@@ -38,9 +42,25 @@ public class Emprestimos {
                     devolucao[x] = dataDeDevolucao;
                     nomesLeitores[x] = nomeDoLeitor;
                     System.out.println("O livro " + nomeDoLivro + " foi emprestado ao leitor " + nomeDoLeitor );
+                    break;
                 }
             }
         }
+    }
+
+    public void devolverLivro(String tituloLivro) {
+
+        for (int i = 0; i < livros.length; i++) {
+            if (livros[i].equalsIgnoreCase(tituloLivro)) {
+                if (estaEmprestado[i]) {
+                 estaEmprestado[i] = false;
+                 nomesLeitores[i] = "";
+                 devolucao[i] = "";
+                 break;
+                }
+            }
+        }
+
     }
 
 }

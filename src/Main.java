@@ -9,7 +9,8 @@ public class Main {
 
         int opc;
 
-        Emprestimos emprestimos = new Emprestimos();
+        String[] livros = {"Livro 1", "Livro 2", "Livro 3", "Livro 4", "Livro 5"};
+        Emprestimos emprestimos = new Emprestimos(livros);
 
         do{
             System.out.println("Menu de opcoes");
@@ -45,7 +46,14 @@ public class Main {
                     break;
                 case 4:
 
+                    System.out.println("Livros emprestados");
+                    emprestimos.listarLivrosEmprestados();
+
+                    System.out.println("Informe o título do livro a ser devolvido: ");
+                    String tituloLivro = scanner.nextLine();
+                    emprestimos.devolverLivro(tituloLivro);
                     break;
+
                 case 5:
                     System.out.println("\nSaindo do programa...");
                     return;
